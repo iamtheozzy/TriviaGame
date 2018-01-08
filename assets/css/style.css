@@ -1,0 +1,110 @@
+/*Main Container*/
+.container{
+	max-width: 80%;
+	background-color: #FFF;
+	border: 2px solid black;
+	margin: 150px auto;
+	max-height: auto;
+	padding: 25px 25px 25px 25px;
+}
+
+/*Background*/
+body{
+	background-image: url("../images/the-office-cast.jpg");
+  /* background-size: cover;
+  background-repeat: no-repeat; */
+}
+
+/*Title*/
+h1{
+	font-family: Georgia, serif;
+  letter-spacing: .04em;
+	font-size: 90px;
+	text-align: center;
+	color: teal;
+
+}
+
+/*Questions*/
+h2{
+	font-family: Georgia, sans-serif;
+	font-size: 35px;
+	text-align: center;
+	margin: 10px;
+	color: teal;
+}
+
+/*Subtitle*/
+#game{
+	font-family: Georgia, cursive;
+	font-size: 40px;
+	text-align: center;
+	margin: 10px;
+	color: teal;
+}
+
+/*Answers*/
+h3{
+	font-family: 'Titillium Web', sans-serif;
+	font-size: 30px;
+	text-align: center;
+	line-height: 35px;
+	color: #FFFFFF;
+	width: 50%;
+	margin-left: 25%;
+}
+
+#theAnswers{
+	width:
+}
+
+#answer1:hover,#answer2:hover,#answer3:hover,#answer0:hover{
+	border: 3px solid white;
+	background-color: #09A870;
+}
+
+/*Start Button*/
+#start{
+	text-align: center;
+	margin:60px auto;
+}
+
+#startButton{
+	width: 40%;
+	background-color: #5EBD18;
+    border: 3px solid white;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+}
+
+#startButton:hover{
+	background-color: #006400;
+	color: white;
+}
+
+/*Time*/
+#display{
+	margin: 50px;
+}
+
+/*Reset Button*/
+#reset{
+	width: 40%;
+	background-color: #C24547;
+    border: 3px solid white;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#reset:hover{
+	background-color: #AC311E;
+	color: white;
+}
