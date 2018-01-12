@@ -13,10 +13,7 @@ var score = 0;
 var questionIndex = 0;
 var answerIndex = 0;
 
-// Array of questions and answers
-var questionsArray = [questions.q1, questions.q2, questions.q3, questions.q4, questions.q5];
-var answersArray = [answers.a1, answers.a2, answers.a3, answers.a4, answers.a5];
-var gameBegin;
+
 
 // Question array for the game
 var questions = {
@@ -36,12 +33,30 @@ var answers = {
   a5: ["30", "40", "25", "50"]
 };
 
+// Array of questions and answers
+var questionsArray = [questions.q1, questions.q2, questions.q3, questions.q4, questions.q5];
+var answersArray = [answers.a1, answers.a2, answers.a3, answers.a4, answers.a5];
+var gameBegin;
+
 // Correct answer array
 var correctAnswer = ["Gary", "Jello", "Beets", "Erin", "40"];
 
 // array to hold images for correct answers
-var correctImage = []
+var correctImage = ["gary.gif", "jello.gif", "beets.gif", "erin.gif", "40.gif"];
 
+
+// hides the reset button when page reloads
+$('#reset').hide();
+
+// Click binding for game Start button
+$("#startButton").click(function(){
+  // game start function
+  gameBegin = true;
+  startGame();
+  // hides start Button
+  $("#startButton").hide();
+  showReset();
+});
 
 
 
