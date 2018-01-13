@@ -58,6 +58,142 @@ $("#startButton").click(function(){
   showReset();
 });
 
+// Starts the game
+function startGame() {
+  console.log("THE GAME HAS BEGUN!!!");
+  startQuestion();
+};
+
+// Start first question
+function startQuestion(){
+  // starts the Timer
+  time();
+  // Displays questions for game
+  $("#start").html("<h2>" + questionsArray[questionIndex][0] + "</h2>");
+  logArray(answersArray[answerIndex]);
+};
+
+// Logic for moving to the next questions
+function next() {
+  //There are 5 questions
+  if(questionIndex < 4){
+    questionIndex++;
+    answerIndex++;
+    startQuestion();
+    $("#answer1, #answer2, #answer3, #answer0").show();
+    $('#images').hide();
+  }
+  //On the last question
+  else if (questionIndex === 4){
+    gameBegin = false;
+    stop();
+    $('#images').hide();
+    $("#answer1, #answer2, #answer3, #answer0").hide();
+    $('#display').hide();
+    $('#start').html("<h2>Your score is: "+ score+"<br>You guessed wrong: "+wrongAnswer+"<br>You didn't guess at all: "+unanswered+'</h2>');
+    showReset();
+  }
+};
+
+// click binding for when user selects an answer
+$("#answer1, #answer2, #answer3, #answer0").on("click", function(word){
+  // stores value of button pushed
+  var word = "";
+  word = $(this).text();
+  // checks for correct answer
+  if(word == correctAnswer[answerIndex]){
+    $("#start").html("<h2>You got it!</h2>");
+    $("#answer1, #answer2, #answer3, #answer0").hide();
+    showImage();
+    setTimeout(next,4000);
+    stop();
+    score++
+  }
+  // if incorrect answer
+  else if (word != correctAnswer[answerIndex]){
+    $("#start").html("<h2> NOPE!!!!! The right answer is " + correctAnswer[answerIndex] + "</h2>");
+    $("#answer1, #answer2, #answer3, #answer0").hide();
+    showImage();
+    stop();
+    setTimeout(next, 4000);
+    wrongAnswer++;
+  }
+// ends click binding
+});
+
+// displays correct image
+function showImage() {
+  $("#images").show();
+  $('#images').html("<img src = 'assets/images/" + correctImage[answerIndex] + "'>");
+};
+
+// reset button
+$("#reset").on("click",function(){
+  // resets game to beginning
+  reset();
+  // then hides reset button
+  $("#reset").hide();
+});
+
+// displays the answers
+function logArray(list){
+  for (var i = 0; i < list.length; i++){
+    $("#answer" + i).html(list[i] + "<br>");
+  }
+};
+
+// Starts the Timer
+function time(){
+  timer = 30;
+  clearInterval(intervalId);
+  // Decreases timer by 1 second
+  intervalId = setInterval(decrement, 1000);
+};
+
+// Resets the game to the start
+function reset(){
+  questionIndex = 0;
+  answerIndex = 0;
+  $("#answer1, #answer2, #answer3, #answer0").show();
+  $('#display').show();
+  time();
+  wrongAnswer = 0;
+  unanswered = 0;
+  score = 0;
+  startGame();
+};
+
+// displays or removes reset Button
+function showReset(){
+  if(gameBegin == true){
+    $("#reset").hide();
+  }
+  else if (gameBegin == false){
+    $("reset").show();
+  }
+};
+
+// Decreases the timer by 1 and thens stops the Timer
+function decrement(){
+  timer--;
+  // display remaining time
+  $("#display").html("<h2>Time Left: " + timer + "</h2>");
+
+  // Alerting user time is up when counter hits 0
+  if(timer === 0){
+    $("display").html("<h2>TIME'S UP!</h2>");
+    $("$start").html("<h2>You're out of time! The right asnwer is: " + correctAnswer[answerIndex] + "</h2>");
+    $("#answer1, #answer2, #answer3, #answer0").hide();
+		stop();
+		setTimeout(next, 3000);
+		unanswered++;
+  }
+};
+
+// stops the Timer
+function stop(){
+  clearInterval(intervalId);
+};
 
 
 

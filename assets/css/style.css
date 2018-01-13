@@ -38,7 +38,7 @@ h2{
 
 /*Subtitle*/
 #game{
-	font-family: Georgia, cursive;
+	font-family: Georgia;
 	font-size: 40px;
 	text-align: center;
 	margin: 10px;
@@ -47,11 +47,11 @@ h2{
 
 /*Answers*/
 h3{
-	font-family: 'Titillium Web', sans-serif;
+	font-family: Georgia, sans-serif;
 	font-size: 30px;
 	text-align: center;
 	line-height: 35px;
-	color: #FFFFFF;
+	color: teal;
 	width: 50%;
 	margin-left: 25%;
 }
